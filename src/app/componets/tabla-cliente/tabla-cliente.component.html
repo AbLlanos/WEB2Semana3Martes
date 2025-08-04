@@ -1,0 +1,27 @@
+<div class="empleado-lista">
+    <div class="empleado-listado li">
+        @for (cliente of clientess; track $index) {
+        <li class="empleado-listado li:hover">
+
+            <p>
+                Nombre: {{cliente.nombre}}
+            </p>
+            <p>
+                Especie: {{cliente.direccion}}
+            </p>
+            <p>
+                Rango: {{cliente.email}}
+            </p>
+
+            <div>
+           <button [routerLink]="['/clientes', cliente.id]">Editar</button>
+
+            </div>
+            
+            <div>
+            <button (click)="eliminar(cliente.id)">Eliminar</button>
+            </div>
+        </li>
+        }
+    </div>
+</div>

@@ -1,0 +1,21 @@
+<div class="empleado-lista">
+    <div class="empleado-listado li">
+        @for (empleado of empleados; track $index) {
+            <li class="empleado-listado li:hover">
+                <p class="empleado-listado p">
+                    Id: {{empleado.id}}
+                </p>
+                <p>
+                    Nombre: {{empleado.name}}
+                </p>
+                <p>
+                    Especie: {{empleado.species}}
+                </p>
+                <p>
+                    Rango: {{empleado.status}}
+                </p>
+                <img class="img" src="{{empleado.image}}">
+            </li>
+        }
+    </div>
+</div>
