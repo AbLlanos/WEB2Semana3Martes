@@ -21,7 +21,7 @@ export class LoginComponent {
   Login() {
   this.authServicio.LoginAuthenticacion(this.usuario, this.password).subscribe(sesionExitosa => {
     if (sesionExitosa) {
-      const redireccion = localStorage.getItem("redirectUrl") || "empleados";
+      const redireccion = localStorage.getItem("redirectUrl") || "empleado";
       localStorage.removeItem("redirectUrl");
       this.router.navigateByUrl(redireccion);
     } else {

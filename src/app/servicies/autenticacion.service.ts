@@ -1,14 +1,14 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
-import { map, catchError } from 'rxjs/operators';
+import { map} from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AutenticacionService {
+private usuariosUrl = 'assets/usuarios.json';
 
-  private usuariosUrl = '';
 
   constructor(private http: HttpClient) { }
 
@@ -17,6 +17,7 @@ export class AutenticacionService {
     return this.http.get<any[]>(this.usuariosUrl).pipe(
       map(usuarios => {
         const encontrado = usuarios.find(u => u.usuario === usuario && u.password === password);
+        
         if (encontrado) {
           localStorage.setItem("user", usuario);
           return true;
@@ -33,4 +34,6 @@ export class AutenticacionService {
   logOut(): void {
     localStorage.removeItem("user");
   }
+  
+  
 }

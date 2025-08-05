@@ -7,17 +7,27 @@ import { ActualizarClienteComponent } from './componets/actualizar-cliente/actua
 import { autheticaGuard } from './guardr/authetica.guard';
 import { LoginComponent } from './componets/login/login.component';
 import { CerrarLoginComponent } from './componets/cerrar-login/cerrar-login.component';
+import { RegistroUsarioFormComponent } from './components/registro-usario-form/registro-usario-form.component';
+import { resigtroUsuarioGuard } from './guards/resigtro-usuario.guard';
+import { loginCanMatchGuard } from './guards/login-can-match.guard';
 
 export const routes: Routes = [
-    {path:"home", component:HomeComponent},
+    { path: "home", component: HomeComponent },
 
-    {path:"empleado", component:EmpleadosComponent, canActivate:[autheticaGuard]},
-    {path:"login", component:LoginComponent},
-    {path: "Cerrar", component:CerrarLoginComponent},
-    {path:"clientes/:id", component:ActualizarClienteComponent},
+    { path: "empleado", component: EmpleadosComponent, canActivate: [autheticaGuard] },
 
-    {path:"registro", component:FormularioClienteComponent},
-    {path:"cliente", component:TablaClienteComponent},
+    { path: "login", component: LoginComponent, canMatch: [loginCanMatchGuard] },
 
-{path:"", redirectTo:"home", pathMatch:"full" }
+    { path: "Cerrar", component: CerrarLoginComponent },
+    { path: "clientes/:id", component: ActualizarClienteComponent },
+
+    { path: "registro", component: FormularioClienteComponent },
+    { path: "cliente", component: TablaClienteComponent },
+
+
+
+    { path: "formularioRegistro", component: RegistroUsarioFormComponent, canDeactivate: [resigtroUsuarioGuard] },
+
+
+    { path: "", redirectTo: "home", pathMatch: "full" }
 ];
